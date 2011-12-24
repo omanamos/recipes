@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20111224170801) do
   end
 
   create_table "recipes", :force => true do |t|
+    t.integer  "user_id",      :null => false
     t.string   "title",        :null => false
     t.text     "cooking_time"
     t.text     "directions"

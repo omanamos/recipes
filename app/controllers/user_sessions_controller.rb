@@ -1,10 +1,15 @@
 class UserSessionsController < ApplicationController
+  skip_before_filter :require_login
 
   def new
-    @user_session = UserSession.new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @user }
+    if logged_in?
+      redirect_to "/users/#{current_user.id}"
+    else
+      @user_session = UserSession.new
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @user }
+      end
     end
   end
 
@@ -13,7 +18,6 @@ class UserSessionsController < ApplicationController
 
     respond_to do |format|
       if @user_session.save
-        puts "logged in"
         format.html { redirect_to "/users/#{@user_session.user.id}", notice: 'You\'re logged in.' }
         format.json { render json: @user_session, status: :created, location: @user_session }
       else
@@ -25,17 +29,9 @@ class UserSessionsController < ApplicationController
 
   def destroy
     current_user_session.destroy if current_user_session
-    render :json => { :success => true }
-  end
-
-  private
-
-  def successful(session)
-  	@current_user_session = session
-    render :json => { :name => session.user.fl_name, :success => true }
-  end
-
-  def unsuccessful
-    render :json => { :success => false }
+    respond_to do |format|
+      format.html { redirect_to "/", notice: 'You\'ve logged out.' }
+      format.json { render json: @user_session, status: :destroyed, location: @user_session }
+    end
   end
 end

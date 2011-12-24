@@ -1,6 +1,7 @@
 class CreateRecipes < ActiveRecord::Migration
   def change
     create_table :recipes do |t|
+      t.references :user, :null => false
       t.string :title, :null => false
       t.text :cooking_time
       t.text :directions

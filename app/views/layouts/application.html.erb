@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Recipes</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<% if !flash[:error].nil? %>
-<div id="error_explanation">
-  <h2><%= flash[:error] %></h2>
-</div>
-<% end %>
-<%= yield %>
-
-</body>
+  <head>
+    <title>Recipes</title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div id="page">
+      <h1 id="title">Ziperski Cookbook</h1>
+      <% if logged_in? %>
+      <div id="actions">
+        <%= link_to 'Account', edit_user_path(@user) %> | 
+        <%= link_to 'Logout', '/logout' %>
+      </div>
+      <div id="welcome">
+        <p>Welcome, <%= @user.fl_name %></p>
+      </div>
+      <% end %>
+      <% if !flash[:error].nil? %>
+      <div id="error_explanation">
+        <h2><%= flash[:error] %></h2>
+      </div>
+      <% end %>
+      <%= yield %>
+    </div>
+  </body>
 </html>

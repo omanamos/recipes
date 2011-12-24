@@ -5,3 +5,27 @@
  *= require_self
  *= require_tree . 
 */
+body {
+    background-repeat: repreat;
+    background-position: center top;
+    background-attachment: fixed;
+    padding: 15px;
+}
+#page {
+    width: 800px;
+    min-height: 500px;
+    margin: auto;
+    background-color: #ffffff;
+    opacity: 0.8;
+    border-radius: 15px;
+    overflow: hidden;
+    padding: 15px;
+}
+#title {
+    margin: 0;
+    font-size: 3em;
+    display: inline;
+}
+#actions {
+    float: right;
+}

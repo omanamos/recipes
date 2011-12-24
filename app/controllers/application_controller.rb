@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :require_login
 
-  helper_method :require_admin
+  helper_method :require_admin, :current_user_session, :current_user, :logged_in?
 
   private
     def require_admin

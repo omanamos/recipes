@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   validates_presence_of :role, :first_name, :last_name, :email
+  has_many :recipes
   acts_as_authentic
 
   def fl_name
