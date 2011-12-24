@@ -8,16 +8,16 @@
   </head>
   <body>
     <div id="page">
-      <h1 id="title">Ziperski Cookbook</h1>
-      <% if logged_in? %>
-      <div id="actions">
-        <%= link_to 'Account', edit_user_path(@user) %> | 
-        <%= link_to 'Logout', '/logout' %>
+      <div id="header">
+        <h1 id="title">Ziperski Cookbook</h1>
+        <% if logged_in? %>
+        <div id="actions">
+          <span>Welcome, <%= @user.fl_name %></span> | 
+          <%= link_to 'Account', edit_user_path(@user) %> | 
+          <%= link_to 'Logout', '/logout' %>
+        </div>
+        <% end %>
       </div>
-      <div id="welcome">
-        <p>Welcome, <%= @user.fl_name %></p>
-      </div>
-      <% end %>
       <% if !flash[:error].nil? %>
       <div id="error_explanation">
         <h2><%= flash[:error] %></h2>
