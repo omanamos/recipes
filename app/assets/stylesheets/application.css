@@ -29,6 +29,14 @@ body {
     overflow: hidden;
     padding: 15px;
 }
+  #page > #left {
+      float: left;
+      width: 25%;
+  }
+  #page > #right {
+      float: left;
+      overflow: hidden;
+  }
 #title {
     margin: 0;
     font-size: 3em;

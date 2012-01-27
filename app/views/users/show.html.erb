@@ -2,4 +2,29 @@
 <div id="left">
 </div>
 <div id="right">
+  <h1>Your recipes</h1>
+
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Cooking time</th>
+      <th>Directions</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+    <% @recipes.each do |recipe| %>
+    <tr>
+      <td><%= recipe.title %></td>
+      <td><%= recipe.cooking_time %></td>
+      <td><pre><%= recipe.directions %></pre></td>
+      <td><%= recipe.description %></td>
+      <td><%= link_to 'Show', recipe %></td>
+      <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
+      <td><%= link_to 'Destroy', recipe, confirm: 'Are you sure?', method: :delete %></td>
+    </tr>
+    <% end %>
+  </table>
 </div>

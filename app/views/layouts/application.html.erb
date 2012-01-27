@@ -12,8 +12,8 @@
         <h1 id="title">Ziperski Cookbook</h1>
         <% if logged_in? %>
         <div id="actions">
-          <span>Welcome, <%= @user.fl_name %></span> | 
-          <%= link_to 'Account', edit_user_path(@user) %> | 
+          <span>Welcome, <%= current_user.fl_name %></span> | 
+          <%= link_to 'Account', edit_user_path(current_user) %> | 
           <%= link_to 'Logout', '/logout' %>
         </div>
         <% end %>

@@ -30,4 +30,5 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+  <input type="hidden" name="recipe[user_id]" value="<%= current_user.id %>" />
 <% end %>
